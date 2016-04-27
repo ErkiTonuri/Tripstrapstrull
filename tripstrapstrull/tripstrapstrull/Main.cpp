@@ -5,10 +5,13 @@ using namespace std;
 char matrix[3][3] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 // loob mängija
 char player = 'X';
+int n;
 
 void Draw()
 // Joonistab mängulaua konsooli
 {
+	// puhastab ekraani et parem oleks mängu jälgida
+	system("cls");
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++)
@@ -26,24 +29,29 @@ void Input()
 	cout << "Vali millise kohta tahad käia: ";
 	cin >> a;
 
-	if (a == 1)
+	if (a == 1 && matrix[0][0] == '1')
 		matrix[0][0] = player;
-	else if (a == 2)
+	else if (a == 2 && matrix[0][1] == '2')
 		matrix[0][1] = player;
-	else if (a == 3)
+	else if (a == 3 && matrix[0][2] == '3')
 		matrix[0][2] = player;
-	else if (a == 4)
+	else if (a == 4 && matrix[1][0] == '4')
 		matrix[1][0] = player;
-	else if (a == 5)
+	else if (a == 5 && matrix[1][1] == '5')
 		matrix[1][1] = player;
-	else if (a == 6)
+	else if (a == 6 && matrix[1][2] == '6')
 		matrix[1][2] = player;
-	else if (a == 7)
+	else if (a == 7 && matrix[2][0] == '7')
 		matrix[2][0] = player;
-	else if (a == 8)
+	else if (a == 8 && matrix[2][1] == '8')
 		matrix[2][1] = player;
-	else if (a == 9)
+	else if (a == 9 && matrix[2][2] == '9')
 		matrix[2][2] = player;
+	else
+	{
+		cout << "Sinna on märgitud midagi! Käi uuesti: ";
+		Input();
+	}
 }
 
 void TogglePlayer()
@@ -106,16 +114,18 @@ char Win()
 		return 'O';
 
 	//tagastab midagi muidu paneb programm metsa
-	return '/';
+	return 'K';
 }
 
 int main()
 {
+	n = 0;
 	// kutsub joonistamise välja
 	Draw();
 	// loob lõpmatu korduse
-	while (1)
+	while (n < 9)
 	{
+		n++;
 		Input();
 		Draw();
 		if (Win() == 'X')
@@ -126,6 +136,11 @@ int main()
 		else if (Win() == 'Y')
 		{
 			cout << "2. mängija võitis" << endl;
+			break;
+		}
+		else if (Win() == 'K' && n == 9)
+		{
+			cout << "Keegi ei võida" << endl;
 			break;
 		}
 		TogglePlayer();
