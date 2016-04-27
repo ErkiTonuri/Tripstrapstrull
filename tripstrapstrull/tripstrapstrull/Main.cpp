@@ -22,7 +22,7 @@ void Draw()
 	}
 }
 
-void Input()
+void Sisesta()
 {
 	// inimene sisestab numbri kuhu tahab käia
 	int a;
@@ -51,7 +51,7 @@ void Input()
 	else
 	{
 		cout << "Sinna on märgitud midagi! Käi uuesti: ";
-		Input();
+		Sisesta();
 	}
 }
 
@@ -127,7 +127,7 @@ int main()
 	while (n < 9)
 	{
 		n++;
-		Input();
+		Sisesta();
 		Draw();
 		if (Win() == 'X')
 		{
