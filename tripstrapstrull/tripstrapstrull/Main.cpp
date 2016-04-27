@@ -44,10 +44,55 @@ void Input()
 
 void TogglePlayer()
 {
-	if (player = 'X')
+	if (player == 'X')
 		player = 'O';
 	else
 		player = 'X';
+}
+
+char Win()
+{
+	// kontrollib kas 1 mängija võibab 
+	if (matrix[0][0] == 'X' && matrix[0][1] == 'X' && matrix[0][2] == 'X')
+		return 'X';
+	if (matrix[1][0] == 'X' && matrix[1][1] == 'X' && matrix[1][2] == 'X')
+		return 'X';
+	if (matrix[2][0] == 'X' && matrix[2][1] == 'X' && matrix[2][2] == 'X')
+		return 'X';
+
+	if (matrix[0][0] == 'X' && matrix[1][0] == 'X' && matrix[2][0] == 'X')
+		return 'X';
+	if (matrix[0][1] == 'X' && matrix[1][1] == 'X' && matrix[2][1] == 'X')
+		return 'X';
+	if (matrix[0][2] == 'X' && matrix[1][2] == 'X' && matrix[2][2] == 'X')
+		return 'X';
+
+	if (matrix[0][0] == 'X' && matrix[1][1] == 'X' && matrix[2][2] == 'X')
+		return 'X';
+	if (matrix[2][0] == 'X' && matrix[1][1] == 'X' && matrix[0][2] == 'X')
+		return 'X';
+
+	// kontrollib kas teine mängija võibab
+	// vahetas ümber Notepad++, et kiiremini teha
+	if (matrix[0][0] == 'O' && matrix[0][1] == 'O' && matrix[0][2] == 'O')
+		return 'O';
+	if (matrix[1][0] == 'O' && matrix[1][1] == 'O' && matrix[1][2] == 'O')
+		return 'O';
+	if (matrix[2][0] == 'O' && matrix[2][1] == 'O' && matrix[2][2] == 'O')
+		return 'O';
+
+	if (matrix[0][0] == 'O' && matrix[1][0] == 'O' && matrix[2][0] == 'O')
+		return 'O';
+	if (matrix[0][1] == 'O' && matrix[1][1] == 'O' && matrix[2][1] == 'O')
+		return 'O';
+	if (matrix[0][2] == 'O' && matrix[1][2] == 'O' && matrix[2][2] == 'O')
+		return 'O';
+
+	if (matrix[0][0] == 'O' && matrix[1][1] == 'O' && matrix[2][2] == 'O')
+		return 'O';
+	if (matrix[2][0] == 'O' && matrix[1][1] == 'O' && matrix[0][2] == 'O')
+		return 'O';
+	return '/';
 }
 
 int main()
@@ -57,6 +102,16 @@ int main()
 	{
 		Input();
 		Draw();
+		if (Win() == 'X')
+		{
+			cout << "1. mängija võitis" << endl;
+			break;
+		}
+		else if (Win() == 'Y')
+		{
+			cout << "2. mängija võitis" << endl;
+			break;
+		}
 		TogglePlayer();
 	}
 	system("pause");
