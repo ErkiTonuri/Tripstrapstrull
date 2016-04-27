@@ -129,20 +129,24 @@ int main()
 		n++;
 		Sisesta();
 		Draw();
-		if (Win() == 'X')
+		// hakkab võitu kontrollima alles peale 5.käiku millal tekib esimene võimalus võitmiseks
+		if (n >= 5)
 		{
-			cout << "1. mängija võitis" << endl;
-			break;
-		}
-		else if (Win() == 'Y')
-		{
-			cout << "2. mängija võitis" << endl;
-			break;
-		}
-		else if (Win() == 'K' && n == 9)
-		{
-			cout << "Keegi ei võida" << endl;
-			break;
+			if (Win() == 'X')
+			{
+				cout << "1. mängija võitis" << endl;
+				break;
+			}
+			else if (Win() == 'Y')
+			{
+				cout << "2. mängija võitis" << endl;
+				break;
+			}
+			else if (Win() == 'K' && n == 9)
+			{
+				cout << "Keegi ei võida" << endl;
+				break;
+			}
 		}
 		TogglePlayer();
 	}
