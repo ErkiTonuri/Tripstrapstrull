@@ -26,9 +26,10 @@ void Input()
 {
 	// inimene sisestab numbri kuhu tahab käia
 	int a;
-	cout << "Vali millise kohta tahad käia: ";
+	cout << "Mängia " << player <<" käib! Vali millise kohta tahad käia: ";
 	cin >> a;
 
+	// vahetab numbri ära mängia tähega
 	if (a == 1 && matrix[0][0] == '1')
 		matrix[0][0] = player;
 	else if (a == 2 && matrix[0][1] == '2')
