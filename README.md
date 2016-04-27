@@ -1,0 +1,2 @@
+# Tripstrapstrull
+Kvalifikatsioon
